@@ -9,6 +9,7 @@ namespace rps
             string[] a = new string[args.Length + 1];
             args.CopyTo(a, 1);
             ConsoleTable consoleTable = new ConsoleTable(a);
+            consoleTable.Options.EnableCount = false;
             
             for (int i = 0; i < args.Length; i++)
             {

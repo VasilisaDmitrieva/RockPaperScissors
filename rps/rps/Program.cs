@@ -20,14 +20,21 @@ namespace rps
             }
 
             Random random = new Random();
-
-            HashGenerate hashGenerate = new HashGenerate();
-            int move = random.Next(args.Length);
-            Console.WriteLine("HMAC: " + hashGenerate.hmac(args[move]));
-
             Rules rules = new Rules(args.Length);
+            HashGenerate hashGenerate = null;
+            bool newGame = true;
+            int move = 0;
+
             while (true)
             {
+                if (newGame)
+                {
+                    hashGenerate = new HashGenerate();
+                    move = random.Next(args.Length);
+                    Console.WriteLine("HMAC: " + hashGenerate.hmac(args[move]));
+                    newGame = false;
+                }
+
                 Console.WriteLine("Available moves:");
                 for (int i = 0; i < args.Length; i++)
                 {
@@ -43,7 +50,7 @@ namespace rps
                         return;
                     case "?":
                         Console.WriteLine(HelpTable.getTable(args, rules));
-                        break;
+                        continue;
                 }
 
                 try
@@ -56,8 +63,10 @@ namespace rps
 
                         Console.WriteLine("Game result: " + rules.GetGameResult(x, move));
                         Console.WriteLine("HMAC key: " + hashGenerate.getKey());
+                        Console.WriteLine();
+                        newGame = true;
+                        continue;
                     }
-                    return;
                 }
                 catch (FormatException)
                 {
