@@ -15,12 +15,12 @@ namespace rps
             keyGenerator.GetBytes(key);
         }
 
-        public string getKey()
+        public string GetKey()
         {
             return BitConverter.ToString(key).Replace("-", "");
         }
 
-        public string hmac(string str)
+        public string HMAC(string str)
         {
             using (HMACSHA256 hmac = new HMACSHA256(key))
             {

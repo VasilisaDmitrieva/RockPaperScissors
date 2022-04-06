@@ -4,7 +4,7 @@ namespace rps
 {
     class HelpTable
     {
-        public static string getTable(string[] args, Rules rules)
+        public static string GetTable(string[] args, Rules rules)
         {
             string[] a = new string[args.Length + 1];
             args.CopyTo(a, 1);

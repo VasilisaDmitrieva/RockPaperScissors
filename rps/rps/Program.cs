@@ -31,7 +31,7 @@ namespace rps
                 {
                     hashGenerate = new HashGenerate();
                     move = random.Next(args.Length);
-                    Console.WriteLine("HMAC: " + hashGenerate.hmac(args[move]));
+                    Console.WriteLine("HMAC: " + hashGenerate.HMAC(args[move]));
                     newGame = false;
                 }
 
@@ -49,7 +49,7 @@ namespace rps
                     case "0":
                         return;
                     case "?":
-                        Console.WriteLine(HelpTable.getTable(args, rules));
+                        Console.WriteLine(HelpTable.GetTable(args, rules));
                         continue;
                 }
 
@@ -62,7 +62,7 @@ namespace rps
                         Console.WriteLine("Computer move: " + args[move]);
 
                         Console.WriteLine("Game result: " + rules.GetGameResult(x, move));
-                        Console.WriteLine("HMAC key: " + hashGenerate.getKey());
+                        Console.WriteLine("HMAC key: " + hashGenerate.GetKey());
                         Console.WriteLine();
                         newGame = true;
                         continue;
